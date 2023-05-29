@@ -1,0 +1,32 @@
+.card-image {
+    width: 100%;
+}
+.card {
+    width: 17.5rem;
+    padding: 5%;
+    border: 2px solid #3e4361;
+    border-radius: 10px;
+    color: #fff;
+    margin-top: 2%;
+    text-decoration: none;
+}
+.label {
+    display:inline-block;
+    margin: 1%;
+    padding-inline: 0.5rem;
+    border-radius: 10px;
+}
+.label-container {
+    display: flex;
+    flex-direction: row;
+}
+.label-name {
+    font-weight: 500;
+    font-size: 12px;
+    color: #fff;
+}
+
+.card:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}

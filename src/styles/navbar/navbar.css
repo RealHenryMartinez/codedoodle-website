@@ -1,0 +1,24 @@
+#navbar {
+    background-color: #272a30;
+    display: flex;
+    align-items: center;
+}
+#navbar > h1 {
+    flex: 2;
+    margin-inline: 5%;
+    color: #fff;
+}
+
+#routes {
+    flex: 1;
+    display: flex;
+}
+
+.route {
+    padding: 2%;
+    padding-inline: 4%;
+    font-weight: 600;
+}
+.route > a {
+    color: #fff;
+}

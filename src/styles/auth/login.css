@@ -1,0 +1,35 @@
+
+.form {
+    margin: 5rem;
+    padding: 5%;
+    color: #fff;
+    background-color: #272a2b;
+    border: 2px solid #3e4361;
+    align-items: center;
+    
+}
+
+.input-container {
+    margin: 2%;
+    padding: 1%;
+}
+
+.input-container > input {
+    padding: 2%;
+    border: 0;
+    margin-top: 1rem;
+}
+.input-container > label {
+    font-weight: 600;
+    padding: 2%;
+}
+.button-container {
+    margin-left: 2.5%;
+}
+.button-container > button {
+    padding: 1%;
+    padding-inline: 4%;
+    background-color: #3e4361;
+    border: 0;
+    color: #fff;
+}
