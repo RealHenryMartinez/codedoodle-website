@@ -5,3 +5,11 @@ html, body {
     margin: 0;
     background-color: #1e2223;
 }
+
+input {
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+
+}

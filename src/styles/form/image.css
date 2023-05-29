@@ -5,5 +5,24 @@
 #form {
     margin: 5%;
     padding: 5%;
-    background-color: #383740;
+    border: 2px solid #3e4361;
+}
+
+.custom-file-upload {
+    border: 2px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: #fff;
+}
+input[type="file"] {
+    display: none;
+}
+
+#card-preview {
+    border: 2px solid #ccc;
+    width: 25rem;
+    height: 10rem;
+    margin-top: 5%;
+    object-fit: cover;
 }

@@ -4,21 +4,22 @@ import { AuthRoutes } from "./routes/AuthRoutes.js";
 import { useAuth } from "./hooks/useAuth.js";
 
 function App(): JSX.Element {
-  const { login }  = useAuth(); // checking if user is logged in
-  switch(login) {
-    case true:
-      return (
-        <>
-          <NavBar />
-          <AllRoutes  />
-        </>
-      );
-    case false: 
-        return(<>
-          <AuthRoutes />
-        </>)
-  }
- 
+	const { login } = useAuth(); // checking if user is logged in
+	switch (login) {
+		case true:
+			return (
+				<>
+					<NavBar />
+					<AllRoutes />
+				</>
+			);
+		case false:
+			return (
+				<>
+					<AuthRoutes />
+				</>
+			);
+	}
 }
 
 export default App;
