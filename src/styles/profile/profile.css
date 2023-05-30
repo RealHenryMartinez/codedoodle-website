@@ -1,3 +1,6 @@
 #user-card {
     color: #fff;
+    margin: 5%;
+    border: 2px solid #3e4361;
+    padding: 5%;
 }
