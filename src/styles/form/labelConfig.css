@@ -1,0 +1,62 @@
+#label-form {
+    color: #fff;
+    margin: 2rem;
+    padding: 2rem;
+    border: 2px solid #3e4361;
+}
+
+#label-form input[type="text"] {
+    border: 2px solid #3e4361;
+    background-color: transparent;
+    padding: 1em;
+    color: #fff;
+}
+#color-input{
+   
+    background-color: transparent;
+    color: #fff;
+    padding: 0.55em;
+    
+}
+#label-form input[type="color"] {
+    
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+}
+#label-form input[type="submit"]{
+    padding: 1rem;
+    padding-inline: 3.25rem;
+    border: 2px solid #3e4361;
+    background-color: transparent;
+    margin-top: 5%;
+    color: #fff;
+}
+
+.label-card {
+    border: 2px solid #3e4361;
+    padding: 2%;
+    flex: 1;
+    border-radius: 10px;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.label-card > button {
+    flex: 0.25;
+    cursor: pointer;
+    background-color: rgb(243, 88, 88);
+    padding: 1rem;
+    border: 0;
+    border-radius: 10px;
+}
+.label-card > p {
+    flex: 5
+}
+
+#main {
+    flex-direction: row;
+    display: flex;
+}

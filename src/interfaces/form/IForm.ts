@@ -6,7 +6,7 @@ export interface ILabels {
 }
 
 export interface IForm extends IImage {
-    labels?: [ILabels] | null;
+    labels?: ILabels[];
     userId: string;
     user: string;
     title: string;

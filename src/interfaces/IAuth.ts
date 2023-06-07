@@ -9,3 +9,4 @@ export interface IUser {
     email: string | undefined;
     password: string | undefined;
 }
+export interface IRegister extends IUser {}

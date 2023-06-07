@@ -24,7 +24,7 @@ A table:
 	return (
 		<>
 			<div id="markdown-canvas">
-                <h3>Preview</h3>
+               
 				<ReactMarkdown
 					remarkPlugins={[remarkBreaks]}
 					rehypePlugins={[rehypeRaw]}

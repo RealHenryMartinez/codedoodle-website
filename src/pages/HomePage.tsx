@@ -1,8 +1,10 @@
 import "../styles/home/Home.css";
 import { IDummy } from "../interfaces/IHome.js";
 import { PostCard } from "../components/pageComponents/PostCard.js";
+import { useCard } from "../hooks/useCard.js";
 
 export const HomePage = () => {
+	const {cards } = useCard();
 	const dummyData: IDummy[] = [
 		{
 			title: "Website",
@@ -47,8 +49,8 @@ export const HomePage = () => {
 	return (
 		<>
 			<div id="post-component">
-				{dummyData.map((card, index) => (
-					<PostCard key={index} card={card} />
+				{cards.map((card: any, index) => (
+					<PostCard key={index} card={card} user={card.user}/>
 				))}
 			</div>
 		

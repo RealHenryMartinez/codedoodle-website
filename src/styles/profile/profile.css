@@ -4,3 +4,12 @@
     border: 2px solid #3e4361;
     padding: 5%;
 }
+
+#user-card > button {
+    padding: 0.75rem;
+    color: #fff;
+    padding-inline: 2rem;
+    background-color: rgb(243, 88, 88);
+    border: 0;
+    border-radius: 10px;
+}

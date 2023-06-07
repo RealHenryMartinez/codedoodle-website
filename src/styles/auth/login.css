@@ -15,9 +15,11 @@
 }
 
 .input-container > input {
+    color: #000;
     padding: 2%;
     border: 0;
     margin-top: 1rem;
+    background-color: #fff;
 }
 .input-container > label {
     font-weight: 600;
@@ -32,4 +34,7 @@
     background-color: #3e4361;
     border: 0;
     color: #fff;
+}
+.button-container > button:hover {
+    cursor: pointer;
 }
