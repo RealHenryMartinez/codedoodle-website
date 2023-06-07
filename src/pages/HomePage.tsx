@@ -1,9 +1,10 @@
-import React from "react";
 import "../styles/home/Home.css";
 import { IDummy } from "../interfaces/IHome.js";
 import { PostCard } from "../components/pageComponents/PostCard.js";
+import { useCard } from "../hooks/useCard.js";
 
 export const HomePage = () => {
+	const {cards } = useCard();
 	const dummyData: IDummy[] = [
 		{
 			title: "Website",
@@ -24,7 +25,7 @@ export const HomePage = () => {
 			],
 			image: "https://miro.medium.com/v2/resize:fit:0/1*y6C4nSvy2Woe0m7bWEn4BA.png",
 		},
-    {
+		{
 			title: "Finished Project",
 			description: "Tried react for the first time :)",
 			labels: [
@@ -44,11 +45,15 @@ export const HomePage = () => {
 			image: "https://miro.medium.com/v2/resize:fit:0/1*y6C4nSvy2Woe0m7bWEn4BA.png",
 		},
 	];
+
 	return (
-		<div id="post-component">
-			{dummyData.map((card, index) => (
-				<PostCard key={index} card={card} />
-			))}
-		</div>
+		<>
+			<div id="post-component">
+				{cards.map((card: any, index) => (
+					<PostCard key={index} card={card} user={card.user}/>
+				))}
+			</div>
+		
+		</>
 	);
 };

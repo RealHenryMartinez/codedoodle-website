@@ -4,13 +4,15 @@
 
  import { configureStore, ThunkAction, Action} from '@reduxjs/toolkit'
  import useAuthSlice from './slices/authSlice.js';
+import usePostSlice from './slices/postSlice.js';
  
  export const store = configureStore({
    // function that receives the current state of the action object and decide when to update the userSession state
    // event listener that handles events based on the received action type
    reducer: {
      // copy the original state and assign changes to the copied values we chooose
-     useAuthSlice: useAuthSlice
+     useAuthSlice: useAuthSlice,
+     usePostSlice: usePostSlice
    },
    devTools: true,
  })

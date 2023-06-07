@@ -1,26 +1,25 @@
-import React from "react";
-import { UploadImage } from "./UploadImage.js";
+import { ErrorMessage } from "../components/form/errorMessage.js";
+import { LabelConfig } from "../components/form/labelConfig.js";
+import { MarkdownTextInput } from "../components/form/markdownTextInput.js";
+import useForm from "../hooks/useForm.js";
+import { useImage } from "../hooks/useImage.js";
+import '../styles/form/form.css'
 
 export const FormPage = () => {
-	const [imagePreview, setImagePreview] = React.useState(null);
+	const { handleTitleChange, title} = useForm();
+	const { handleSubmitRequest} = useImage();
     // OPen source platform
 	return (
-		<div>
-			<UploadImage />
-			{/* <form
-				onSubmit={handleSubmitForm}
-				encType="multipart/form-data"
-				action="/"
-				method="post"
-			>
-				{imageBusinessPreview === null ? null : (
-					<img
-						src={imageBusinessPreview}
-						alt="preview image"
-						className="imagePreview"
-					/>
-				)}
-			</form> */}
+		<div id="page">
+			<ErrorMessage />
+			<div id="title-form">
+				<h1>Input Title</h1>
+				<input required placeholder="Awesome Website 🔥" type="text" value={title} onChange={(e) => handleTitleChange(e)}/>
+			</div>
+			
+			<MarkdownTextInput />
+			<LabelConfig />
+			<button type="button" id="form-submit" onClick={(e) => handleSubmitRequest(e)}>Next Page</button>
 		</div>
 	);
 };

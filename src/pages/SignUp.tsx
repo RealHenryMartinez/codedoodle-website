@@ -2,30 +2,32 @@ import React, { useRef, useEffect } from "react";
 import { useAuth } from "../hooks/useAuth.js";
 import "../styles/auth/login.css";
 import { useNavigate } from "react-router-dom";
-import { handleError } from "../hooks/useError.js";
 import IError from "../interfaces/form/IError.js";
+import { handleError } from "../hooks/useError.js";
 import { LoginError } from "../components/LoginError.js";
 
 let checkForError: IError = {
 	show: false,
-	message: "",
+	message: '',
 };
 
-export const LoginPage = () => {
-	const { handleLogin } = useAuth();
-	const navigate = useNavigate();
-	const [isAlertVisible, setIsAlertVisible] = React.useState<IError>({
+export const SignUp = () => {
+	const { handleRegister } = useAuth();
+    const [isAlertVisible, setIsAlertVisible] = React.useState<IError>({
 		show: false,
-		message: "",
+		message: '',
 	});
 
-	React.useEffect(() => {
+    React.useEffect(() => {
 		checkForError = isAlertVisible;
-	}, [isAlertVisible]); // <-- here put the param
+    },[isAlertVisible]) // <-- here put the param
 
+	const navigate = useNavigate();
 	// Initialize the login values
 	const emailRef = useRef<HTMLInputElement | null>(null);
 	const passwordRef = useRef<HTMLInputElement | null>(null);
+	const firstNameRef = useRef<HTMLInputElement | null>(null);
+	const lastNameRef = useRef<HTMLInputElement | null>(null);
 
 	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -33,20 +35,24 @@ export const LoginPage = () => {
 		// Get the current referenced values
 		const email = emailRef.current?.value;
 		const password = passwordRef.current?.value;
+		const firstName = firstNameRef.current?.value;
+		const lastName = lastNameRef.current?.value;
 		const userInfo = {
 			email,
 			password,
+			firstName,
+			lastName,
 		};
 
-		if (email && password) {
-			handleLogin(userInfo)
+		if (userInfo) {
+			handleRegister(userInfo)
 				.then(() => {
 					// Update the login state
 					navigate("/");
 				})
 				.catch((error) => {
 					// Handle login error
-					handleError(setIsAlertVisible, error.response.data);
+                    handleError(setIsAlertVisible,error.response.data)
 					console.log("Login error:", error);
 				});
 		}
@@ -54,9 +60,29 @@ export const LoginPage = () => {
 
 	return (
 		<div className="form">
-      <LoginError checkForError={isAlertVisible}/>
-			<h1>Login</h1>
+            <LoginError checkForError={isAlertVisible}/>
+			<h1>Register</h1>
 			<form onSubmit={onSubmit}>
+				<div className="input-container">
+					<label>First Name</label>
+					<br />
+					<input
+						ref={firstNameRef}
+						type="text"
+						name="first-name"
+						required
+					/>
+				</div>
+				<div className="input-container">
+					<label>Last Name</label>
+					<br />
+					<input
+						ref={lastNameRef}
+						type="text"
+						name="last-name"
+						required
+					/>
+				</div>
 				<div className="input-container">
 					<label>Email</label>
 					<br />

@@ -1,0 +1,51 @@
+#markdown-canvas {
+    margin: 5%;
+    color: #fff;
+    padding: 5%;
+    border: 2px solid #3e4361;
+    height: auto;
+    flex: 2;
+    overflow: auto;
+    outline: none;
+   
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.markdown {
+    white-space: "pre-wrap";
+}
+
+#form-container {
+    align-items: center;
+    display: flex;
+    background-color: #1e2223;
+}
+#editor {
+    margin-inline: 5%;
+    flex: 2;
+}
+.header {
+    font-size: 20px;
+    color: #fff;
+    
+}
+#editor > textarea {
+    padding: 2%;
+    color: #fff;
+    resize: none;
+    height: 20rem;
+    width: 100%;
+    border: 2px solid #3e4361;
+    background-color: #1e2223;
+    overflow: auto;
+    outline: none;
+    
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    font-family: 'Rubik', sans-serif;
+    font-family: 'Wix Madefor Text', sans-serif;
+    box-shadow: none;
+
+}

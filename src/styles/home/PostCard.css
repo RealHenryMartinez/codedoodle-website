@@ -1,14 +1,17 @@
 .card-image {
     width: 100%;
+    height: 25vh;
+    object-fit:cover;
 }
 .card {
-    width: 17.5rem;
+    width: 18rem;
     padding: 5%;
     border: 2px solid #3e4361;
     border-radius: 10px;
     color: #fff;
     margin-top: 2%;
     text-decoration: none;
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
 }
 .label {
     display:inline-block;
@@ -20,6 +23,10 @@
     display: flex;
     flex-direction: row;
 }
+.link-group {
+    text-decoration: none;
+    color: #fff;
+}
 .label-name {
     font-weight: 500;
     font-size: 12px;
@@ -29,4 +36,26 @@
 .card:hover {
     opacity: 0.75;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+/* Profile page cards */
+
+.delete-card {
+    background-color: rgb(249, 94, 94);
+    padding: 0.5rem;
+    z-index: 100;
+    cursor: pointer;
+    position: relative;
+}
+.card-header {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-header {
+    flex: 2;
 }

@@ -1,0 +1,43 @@
+#error-container {
+    position: fixed;
+    right: 0;
+    width: 300px;
+    margin: 2%;
+    padding: 1rem;
+    background-color: #f01154;
+    color: #fff;
+    font-weight: 600;
+}
+
+input[type="text"] {
+    border: 2px solid #3e4361;
+    background-color: transparent;
+    padding: 1em;
+    flex: 1;
+    color: #fff;
+}
+
+#title-form {
+    margin-inline: 3rem;
+    color: #fff;
+}
+
+input[type="submit"] {
+    cursor:pointer;
+}
+
+button {
+    cursor: pointer;
+}
+#form-submit{
+    border: 2px solid #3e4361;
+    background-color: transparent;
+    padding: 1em;
+    flex: 1;
+    color: #fff;
+    display: inline-block;
+    right: 0;
+    position: absolute;
+    font-size: 25px;
+    margin: 2rem;
+}
