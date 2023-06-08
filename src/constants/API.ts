@@ -1,6 +1,21 @@
 import axios from "axios";
 
-export const baseURL: string = "http://localhost:4000/";
+// Note: change to production as default
+const webENV: string = "production";
+
+export let baseURL: string = "https://snippetbackend.onrender.com/";
+
+switch(webENV) {
+    case "development":
+        baseURL = "https://snippetbackend.onrender.com/";
+        break;
+    case "production":
+        baseURL = "https://snippetbackend.onrender.com/";
+        break
+    case "local":
+        baseURL = "http://localhost:4000/";
+        break;
+}
 
 export const app = axios.create({
     baseURL,

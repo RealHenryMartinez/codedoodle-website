@@ -13,7 +13,7 @@ const useForm = () => {
 		setTitle(e.target.value);
 		dispatch(setGeneral(e.target.value))
 	};
-	const handleImagePreview = (e, setImage, image) => {
+	const handleImagePreview = (e: any, setImage: any) => {
 		console.log("files targeted: ", e.target.files);
 		if (e.target.files && e.target.files[0]) {
 			setImage(URL.createObjectURL(e.target.files[0])); // create a uri object for the image preview

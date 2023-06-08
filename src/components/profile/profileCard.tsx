@@ -1,8 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { IDummy, ICardLabel } from "../../interfaces/IHome.js";
 import "../../styles/home/PostCard.css";
-import * as BiSolid from "react-icons/bi";
+import {BiTrashAlt} from "react-icons/bi";
 const LabelComponent = (props: ICardLabel) => {
 	const { labels } = props;
 	return (
@@ -27,7 +26,7 @@ interface IProps {
 }
 
 export const ProfileCard = (props: IProps) => {
-	const { card, user, remove } = props;
+	const { card, remove } = props;
    
 	return (
 		<div className={"card"}
@@ -35,7 +34,7 @@ export const ProfileCard = (props: IProps) => {
 			{/* Create a new underlined style */}
 			<div className="card-header">
 				<h2 className="profile-header">{card.title}</h2>
-				<BiSolid.BiTrashAlt
+				<BiTrashAlt
 					className="delete-card"
 					size={25}
 					color="#fff"
@@ -47,7 +46,7 @@ export const ProfileCard = (props: IProps) => {
 				state={{ card }}
                 className="link-group"
 			>
-				<img className={"card-image"} src={card.image} />
+				<img className={"card-image"} src={card.image || "https://www.shutterstock.com/image-photo/software-source-code-programming-on-260nw-634574354.jpg"} />
 				<LabelComponent labels={card.labels} />
 				<p>{card.description.substring(0, 35) + "..."}</p>
 			</Link>

@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { app } from "../constants/API.js";
 import { useAppDispatch } from "../store/hook.js";
-import { makePost, setGeneral } from "../store/slices/postSlice.js";
+import { makePost } from "../store/slices/postSlice.js";
 import IError from '../interfaces/form/IError.js';
 import { handleError } from "./useError.js";
 

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { NavBar } from "./components/NavBar.js";
 import { useAuth } from "./hooks/useAuth.js";

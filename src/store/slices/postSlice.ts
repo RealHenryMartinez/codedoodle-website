@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
 import { RootState } from "../store.js";
 import { app } from "../../constants/API.js";
 import { IForm, ILabels } from "../../interfaces/form/IForm.js";

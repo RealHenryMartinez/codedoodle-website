@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useAuth } from "../hooks/useAuth.js";
 import "../styles/auth/login.css";
 import { useNavigate } from "react-router-dom";

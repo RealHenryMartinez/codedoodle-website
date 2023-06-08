@@ -1,6 +1,5 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { NavBar } from "../components/NavBar.js";
 
 interface IProps {
   path: string;

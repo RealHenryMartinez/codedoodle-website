@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {ProfileCard} from "../components/profile/profileCard.js";
-import { handleLogout, useAuth } from "../hooks/useAuth.js";
+import { handleLogout} from "../hooks/useAuth.js";
 import { useCard } from "../hooks/useCard.js";
 import { useAppSelector } from "../store/hook.js";
 import { user } from "../store/slices/authSlice.js";
