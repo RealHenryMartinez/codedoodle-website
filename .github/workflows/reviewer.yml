@@ -1,14 +1,28 @@
-name: Review Assign
-
+name: Assign Reviewers
 on:
   pull_request:
-    types: [opened, ready_for_review]
+    types:
+      - opened
 
 jobs:
-  assign:
+  assign_reviewers:
     runs-on: ubuntu-latest
     steps:
-      - uses: hkusu/review-assign-action@v1
-        with:
-          assignees: ${{ github.actor }} # assign pull request author
-          reviewers: ${{ vars.REVIEWERS }} # if draft, assigned when draft is released
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Assign Reviewers
+        run: |
+          # Set up the necessary variables
+          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          TOKEN=${{ secrets.GITHUB_TOKEN }}
+          REVIEWERS=${{ vars.REVIEWERS }}
+
+          # Assign reviewers using the GitHub REST API
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $TOKEN" \
+            -d '{
+              "reviewers": ['$REVIEWERS']
+            }' \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/requested_reviewers"
