@@ -3,6 +3,7 @@ import axios from "axios";
 // Note: change to production as default
 const webENV = import.meta.env.VITE_NODE_ENV || "production";
 
+// Our base url
 export let baseURL = "";
 
 console.log(webENV)
