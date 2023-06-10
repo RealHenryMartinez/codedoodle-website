@@ -19,6 +19,7 @@ export const handleLogout = () => {
 // The useAuth hook function definition
 export const useAuth = () => {
   // State variables
+  const expirationDays = 1;
   const [login, setLogin] = React.useState<boolean>(false); // Represents the login state
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export const useAuth = () => {
     });
 
     // Set the token in cookies with expiration and security options
-    Cookies.set("token", response.data.token, { expires: 0.08 });
+    Cookies.set("token", response.data.token, { expires: expirationDays });
     if (response === undefined) {
       return;
     }
@@ -56,7 +57,7 @@ export const useAuth = () => {
 
     // Set the token in cookies with expiration and security options
     // Setting for one day
-    Cookies.set("token", response.data.token, { expires: 1 });
+    Cookies.set("token", response.data.token, { expires: expirationDays });
 
     if (response === undefined) {
       return;
