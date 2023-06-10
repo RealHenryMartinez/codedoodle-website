@@ -39,6 +39,7 @@ export const useAuth = () => {
       return;
     }
     await setLogin(true); // Update the login state to true
+    await localStorage.setItem("login", "true");
     localStorage.setItem("user", JSON.stringify(response.data.user)); // Save the user data to local storage
     navigate("/");
   };
@@ -58,6 +59,7 @@ export const useAuth = () => {
       return;
     }
     await setLogin(true); // Update the login state to true
+    await localStorage.setItem("login", "true");
     localStorage.setItem("user", JSON.stringify(response.data.user)); // Save the user data to local storage
   };
 
