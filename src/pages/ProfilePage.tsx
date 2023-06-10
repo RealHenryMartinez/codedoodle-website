@@ -6,7 +6,7 @@ import { useCard } from "../hooks/useCard.js";
 import { useAppSelector } from "../store/hook.js";
 import { user } from "../store/slices/authSlice.js";
 import "../styles/profile/profile.css";
-
+ 
 export const ProfilePage = () => {
 	const userInfo = useAppSelector(user);
 	const {cards, removeCard} = useCard();

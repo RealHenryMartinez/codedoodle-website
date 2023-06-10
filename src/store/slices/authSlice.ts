@@ -42,7 +42,7 @@ export const useAuthSlice = createSlice({
       state = { ...state, ...payload };
     });
   },
-});
+}); 
 
 export const { setUser } = useAuthSlice.actions;
 

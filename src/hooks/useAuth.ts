@@ -89,7 +89,7 @@ export const useAuth = () => {
           console.error(error);
         }
       }
-    };
+    }; 
 
     verifyCookie(); // Call the verifyCookie function when the component mounts
     // eslint-disable-next-line react-hooks/exhaustive-deps
