@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { NavBar } from "./components/NavBar.js";
 import { useAuth } from "./hooks/useAuth.js";
@@ -13,7 +12,7 @@ import { ProtectedRoute } from "./routes/ProtectedRoute.js";
 
 function App() {
 	const location = useLocation();
-	const {} = useAuth();
+	useAuth();
 	const storedLogin = localStorage.getItem("login");
 	console.log(storedLogin);
 
@@ -58,7 +57,7 @@ function App() {
 							}
 						/>
 						<Route
-							path="/edit-image"
+							path="/edit-image/*"
 							element={
 								<ProtectedRoute
 									path=""
@@ -67,7 +66,7 @@ function App() {
 							}
 						/>
 						<Route
-							path="/profile"
+							path="/profile/*"
 							element={
 								<ProtectedRoute
 									path=""

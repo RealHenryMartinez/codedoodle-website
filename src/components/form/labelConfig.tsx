@@ -6,7 +6,8 @@ import {
 	setAddLabel,
 	setRemoveLabel,
 } from "../../store/slices/postSlice.js";
-import * as BiSolid from 'react-icons/bi';
+import { BiTrashAlt } from 'react-icons/bi';
+
 import "../../styles/form/labelConfig.css";
 
 export const LabelConfig = () => {
@@ -84,7 +85,7 @@ export const LabelConfig = () => {
 						>
 							<p>{label.name}</p>
 							<button onClick={() => removeLabel(label)}>
-								<BiSolid.BiTrashAlt size={25} color="#fff"/>
+								<BiTrashAlt size={25} color="#fff"/>
 							</button>
 						</div>
 					);

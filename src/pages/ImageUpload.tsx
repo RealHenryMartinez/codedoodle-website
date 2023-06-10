@@ -1,4 +1,3 @@
-import React from 'react'
 import { UploadImage } from '../components/form/uploadImage.js'
 import {useLocation} from 'react-router-dom';
 import '../styles/form/imagePage.css'

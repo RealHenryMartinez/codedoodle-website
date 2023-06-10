@@ -1,4 +1,3 @@
-import React from "react";
 import IError from "../interfaces/form/IError.js";
 
 interface IProps {

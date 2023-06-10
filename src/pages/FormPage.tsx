@@ -13,7 +13,7 @@ export const FormPage = () => {
 		<div id="page">
 			<ErrorMessage />
 			<div id="title-form">
-				<h1>Input Title</h1>
+				<h3>Title</h3>
 				<input required placeholder="Awesome Website 🔥" type="text" value={title} onChange={(e) => handleTitleChange(e)}/>
 			</div>
 			

@@ -6,21 +6,21 @@ import IMarkdown from "../../interfaces/form/IMarkdown.js";
 
 export const Markdown = ({ markdownText }: IMarkdown) => {
 	// REMEMBER: Markdown is supposed to be immutable and formatted with no tabs as it destroys the styles, keep it like this format
-	const markdown = `## hello 
-## world
-Just a link: https://reactjs.com.
-> A block quote with **strikethrough** and a URL: https://reactjs.org.
-* Lists
-* [ ] todo
-* [x] done
+// 	const markdown = `## hello 
+// ## world
+// Just a link: https://reactjs.com.
+// > A block quote with **strikethrough** and a URL: https://reactjs.org.
+// * Lists
+// * [ ] todo
+// * [x] done
 
-A table:
+// A table:
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZcJkp2dsHP6ok0hcGQrac5Q7gRP3F3bPk6vQUpwH8&s" alt="hello"/>
+// <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZcJkp2dsHP6ok0hcGQrac5Q7gRP3F3bPk6vQUpwH8&s" alt="hello"/>
 
-| a | b |
-| - | - |
-      `;
+// | a | b |
+// | - | - |
+//       `;
 	return (
 		<>
 			<div id="markdown-canvas">

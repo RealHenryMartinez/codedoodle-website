@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useAuth } from "../hooks/useAuth.js";
 import "../styles/auth/login.css";
 import { useNavigate } from "react-router-dom";
 import IError from "../interfaces/form/IError.js";
-import { handleError } from "../hooks/useError.js";
 import { LoginError } from "../components/LoginError.js";
+import { handleFormError } from "../hooks/useFormError.js";
 
 let checkForError: IError = {
 	show: false,
@@ -52,8 +52,8 @@ export const SignUp = () => {
 				})
 				.catch((error) => {
 					// Handle login error
-                    handleError(setIsAlertVisible,error.response.data)
-					console.log("Login error:", error);
+					console.log(error)
+                    handleFormError(setIsAlertVisible,error.response.data)
 				});
 		}
 	};
@@ -62,6 +62,7 @@ export const SignUp = () => {
 		<div className="form">
             <LoginError checkForError={isAlertVisible}/>
 			<h1>Register</h1>
+			
 			<form onSubmit={onSubmit}>
 				<div className="input-container">
 					<label>First Name</label>

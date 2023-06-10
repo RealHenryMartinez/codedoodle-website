@@ -1,6 +1,6 @@
 import IError from "../interfaces/form/IError.js";
 
-export const handleError = (
+export const handleFormError = (
   setIsAlertVisible: React.Dispatch<React.SetStateAction<IError>>,
   errorMessage: string
 ) => {
@@ -9,15 +9,6 @@ export const handleError = (
     show: true,
     message: errorMessage,
   }));
-
-  setTimeout(() => {
-    setIsAlertVisible((prev) => ({
-      ...prev,
-      show: false,
-      message: "",
-    }));
-    console.log("stop,", errorMessage);
-  });
   setTimeout(() => {
     setIsAlertVisible((prev) => ({
       ...prev,

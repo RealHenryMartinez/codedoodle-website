@@ -1,23 +1,38 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+	"compilerOptions": {
+		"target": "ESNext",
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"module": "ESNext",
+		"skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "node16",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+		/* Bundler mode */
+		"moduleResolution": "node16",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"baseUrl": "src",
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+		/* Linting */
+		"strict": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+
+		"types": ["react", "react-dom", "react-icons"],
+		
+	},
+	/* Include packages installed such as react-icons */
+	"include": [
+		"src/**/*.ts",
+		"tests/**/*.ts",
+		"src"
+    /* Removes React Import warnings by allowing typescript to know these are JSX*/
+		// "**/*.ts",
+		// "**/*.tsx",
+		// "**/**/*.ts",
+		// "**/**/*.tsx"
+	],
+	"exclude": ["node_modules", ".vscode"],
+	"references": [{ "path": "./tsconfig.node.json" }]
 }

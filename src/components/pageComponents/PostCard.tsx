@@ -1,6 +1,6 @@
-import React from "react";
+import { formatDate } from "../../helper/formatDate.js";
 import { Link } from "react-router-dom";
-import { IDummy, ICardLabel } from "../../interfaces/IHome.js";
+import {ICardLabel, ICard } from "../../interfaces/IHome.js";
 import "../../styles/home/PostCard.css";
 
 const LabelComponent = (props: ICardLabel) => {
@@ -21,7 +21,7 @@ const LabelComponent = (props: ICardLabel) => {
 };
 
 interface IProps {
-	card: IDummy;
+	card: ICard;
 	user: string;
 }
 
@@ -36,7 +36,8 @@ export const PostCard = (props: IProps) => {
 			{/* Create a new underlined style */}
 			<h2>{card.title}</h2>
 			<h4>By: {user}</h4>
-			<img className={"card-image"} src={card.image} />
+			<h5>{formatDate(card.createdAt)}</h5>
+			<img className={"card-image"} src={card.image || "https://www.shutterstock.com/image-photo/software-source-code-programming-on-260nw-634574354.jpg"} />
 			<LabelComponent labels={card.labels} />
 			<p>{card.description.substring(0, 35) + "..."}</p>
 		</Link>
