@@ -1,14 +1,14 @@
 import axios from "axios";
 
 // Note: change to production as default
-const webENV = import.meta.env.VITE_NODE_ENV;
+const webENV = import.meta.env.VITE_NODE_ENV || "development";
 
-export let baseURL = "https://snippetbackend.onrender.com/";
+export let baseURL = "";
 
 console.log(webENV)
 if(webENV == "development"){
     console.log(webENV)
-    baseURL = "https://snippetbackend.onrender.com/";
+    baseURL = "https://snippetdeveloperbackend.onrender.com";
 }
 else if(webENV == "production"){
     console.log(webENV)
