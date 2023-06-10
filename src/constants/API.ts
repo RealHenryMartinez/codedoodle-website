@@ -1,20 +1,21 @@
 import axios from "axios";
 
 // Note: change to production as default
-const webENV: string = "production";
+const webENV = import.meta.env.VITE_NODE_ENV;
 
-export let baseURL: string = "https://snippetbackend.onrender.com/";
+export let baseURL = "https://snippetbackend.onrender.com/";
 
-switch(webENV) {
-    case "development":
-        baseURL = "https://snippetbackend.onrender.com/";
-        break;
-    case "production":
-        baseURL = "https://snippetbackend.onrender.com/";
-        break
-    case "local":
-        baseURL = "http://localhost:4000/";
-        break;
+console.log(webENV)
+if(webENV == "development"){
+    console.log(webENV)
+    baseURL = "https://snippetbackend.onrender.com/";
+}
+else if(webENV == "production"){
+    console.log(webENV)
+    baseURL = "https://snippetbackend.onrender.com/";
+}
+else {
+    baseURL = "http://localhost:4000/";
 }
 
 export const app = axios.create({

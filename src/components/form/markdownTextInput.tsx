@@ -10,7 +10,7 @@ export const MarkdownTextInput = () => {
 			<h1 className="header">Editor</h1>
 				<textarea
 					onChange={onInputChange}
-					placeholder="## Hello World Application"
+					placeholder="Uses markdown ex:## Hello World Application"
 				/>
 			</div>
 

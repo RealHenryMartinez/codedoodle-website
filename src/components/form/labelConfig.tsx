@@ -6,7 +6,8 @@ import {
 	setAddLabel,
 	setRemoveLabel,
 } from "../../store/slices/postSlice.js";
-import {BiTrashAlt} from 'react-icons/bi';
+import { BiTrashAlt } from 'react-icons/bi';
+
 import "../../styles/form/labelConfig.css";
 
 export const LabelConfig = () => {

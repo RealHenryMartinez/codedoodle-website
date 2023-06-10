@@ -9,6 +9,7 @@ const initialState: IUser = {
   lastName: "",
   email: "",
   password: "",
+  _id: "",
 };
 
 export const fetchUser = createAsyncThunk("useAuthSlice/fetchUser", async () => {
@@ -30,6 +31,7 @@ export const useAuthSlice = createSlice({
         state.lastName = payload.last_name;
         state.email = payload.email;
         state.password = payload.password;
+        state._id = payload._id;
       }
     },
   },

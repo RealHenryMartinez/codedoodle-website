@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { IDummy, ICardLabel } from "../../interfaces/IHome.js";
+import {ICardLabel, ICard } from "../../interfaces/IHome.js";
 import "../../styles/home/PostCard.css";
-import {BiTrashAlt} from "react-icons/bi";
+import * as BiIcons from "react-icons/bi";
+import { formatDate } from "../../helper/formatDate.js";
 const LabelComponent = (props: ICardLabel) => {
 	const { labels } = props;
 	return (
@@ -20,27 +21,29 @@ const LabelComponent = (props: ICardLabel) => {
 };
 
 interface IProps {
-	card: IDummy;
+	card: ICard;
 	user: string;
-    remove: (_id: string) => {};
+    remove: (_id: string) => void;
 }
 
 export const ProfileCard = (props: IProps) => {
 	const { card, remove } = props;
-   
+
 	return (
 		<div className={"card"}
         unselectable="on">
 			{/* Create a new underlined style */}
 			<div className="card-header">
 				<h2 className="profile-header">{card.title}</h2>
-				<BiTrashAlt
+				<BiIcons.BiTrashAlt
 					className="delete-card"
 					size={25}
 					color="#fff"
-                    onClick={() => remove(card._id!)}
+					// Check if there is an id
+                    onClick={() => remove(card?._id ?? '')}
 				/>
 			</div>
+			<h5>{formatDate(card.createdAt)}</h5>
 			<Link
 				to={{ pathname: `/create/view-card/${card._id}` }}
 				state={{ card }}

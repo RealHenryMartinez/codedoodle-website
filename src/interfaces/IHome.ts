@@ -11,5 +11,11 @@ export interface IDummy extends ICardLabel {
     title: string,
     description: string,
     image: string,
-    _id?: string
+    _id?: string,
+    
   }
+
+export interface ICard extends IDummy {
+    createdAt: string;
+    userId: string;
+}

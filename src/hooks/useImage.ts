@@ -64,7 +64,7 @@ export const useImage = () => {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault();
-		let tempCardId: string = "";
+		let tempCardId = "";
 		try {
 			const postData: AxiosError | any = await dispatch(makePost());
 			if(axios.isAxiosError(postData.payload)){

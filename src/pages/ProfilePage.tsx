@@ -1,3 +1,4 @@
+import { ICard } from "interfaces/IHome.js";
 import { useNavigate } from "react-router-dom";
 import {ProfileCard} from "../components/profile/profileCard.js";
 import { handleLogout} from "../hooks/useAuth.js";
@@ -9,6 +10,8 @@ import "../styles/profile/profile.css";
 export const ProfilePage = () => {
 	const userInfo = useAppSelector(user);
 	const {cards, removeCard} = useCard();
+	console.log(userInfo)
+	const userCards: ICard[] = cards.filter((card: ICard) => card.userId === userInfo._id)
 	const navigate = useNavigate();
 	const handleUser = () => {
 		handleLogout();
@@ -23,7 +26,7 @@ export const ProfilePage = () => {
 				<button onClick={handleUser}>Log Out</button>
 			</div>
 			<div id="post-component">
-			{cards.map((card: any, index) => (
+			{userCards.map((card: any, index) => (
 					<ProfileCard key={index} card={card} remove={removeCard} user={card.user}/>
 				))}
 			</div>

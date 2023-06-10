@@ -8,5 +8,6 @@ export interface IUser {
     lastName: string | undefined;
     email: string | undefined;
     password: string | undefined;
+    _id?: string;
 }
 export interface IRegister extends IUser {}
