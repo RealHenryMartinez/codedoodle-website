@@ -41,6 +41,8 @@ export const useAuth = () => {
     await setLogin(true); // Update the login state to true
     await localStorage.setItem("login", "true");
     localStorage.setItem("user", JSON.stringify(response.data.user)); // Save the user data to local storage
+    dispatch(setUser(response.data.user)); // Dispatch an action to set the user in the Redux store
+    dispatch(setUserCard(response.data.user)); // Dispatch an action to set the user card in the Redux store
     navigate("/");
   };
   const handleRegister = async (userInfo: IRegister) => {
@@ -59,6 +61,8 @@ export const useAuth = () => {
       return;
     }
     await setLogin(true); // Update the login state to true
+    dispatch(setUser(response.data.user)); // Dispatch an action to set the user in the Redux store
+    dispatch(setUserCard(response.data.user)); // Dispatch an action to set the user card in the Redux store
     await localStorage.setItem("login", "true");
     localStorage.setItem("user", JSON.stringify(response.data.user)); // Save the user data to local storage
   };
@@ -91,7 +95,7 @@ export const useAuth = () => {
           console.error(error);
         }
       }
-    }; 
+    };
 
     verifyCookie(); // Call the verifyCookie function when the component mounts
     // eslint-disable-next-line react-hooks/exhaustive-deps
