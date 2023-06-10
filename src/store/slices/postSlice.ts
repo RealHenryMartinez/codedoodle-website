@@ -46,11 +46,9 @@ export const usePostSlice = createSlice({
 	initialState,
 	reducers: {
 		setGeneral: (state, { payload }) => {
-			console.log(payload);
 			state.title = payload;
 		},
 		setDesc: (state, { payload }) => {
-			console.log(payload);
 			state.description = payload;
 		},
 		setUserCard: (state, { payload }) => {

@@ -8,11 +8,9 @@ export let baseURL = "";
  
 console.log(webENV)
 if(webENV == "development"){
-    console.log(webENV)
     baseURL = "https://snippetdeveloperbackend.onrender.com";
 }
 else if(webENV == "production"){
-    console.log(webENV)
     baseURL = "https://snippetbackend.onrender.com/";
 }
 else {

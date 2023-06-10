@@ -19,13 +19,11 @@ export const handleLogout = () => {
 // The useAuth hook function definition
 export const useAuth = () => {
   // State variables
-  const expirationDays = 10;
+  const expirationDays = 1;
   const [login, setLogin] = React.useState<boolean>(false); // Represents the login state
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isDoneRef = React.useRef(false);
-  const currentUser = useAppSelector(user);
-
   // Function to handle login
   const handleLogin = async (userInfo: ILogin) => {
     // Make a POST request to the "/auth/login" API endpoint
@@ -63,10 +61,14 @@ export const useAuth = () => {
       return;
     }
     await setLogin(true); // Update the login state to true
-    dispatch(setUser(response.data.user)); // Dispatch an action to set the user in the Redux store
-    dispatch(setUserCard(response.data.user)); // Dispatch an action to set the user card in the Redux store
+   
     await localStorage.setItem("login", "true");
     localStorage.setItem("user", JSON.stringify(response.data.user)); // Save the user data to local storage
+
+
+    // We want the state to remain
+    dispatch(setUser(response.data.user)); // Dispatch an action to set the user in the Redux store
+    dispatch(setUserCard(response.data.user)); // Dispatch an action to set the user card in the Redux store
   };
 
   React.useEffect(() => {
@@ -94,6 +96,7 @@ export const useAuth = () => {
             // We navigate to the home page because we don't refresh the user account unless the cookies are updated
             navigate("/"); // Navigate to the home page
           }
+          
         } catch (error) {
           console.error(error);
         }
@@ -102,7 +105,7 @@ export const useAuth = () => {
 
     verifyCookie(); // Call the verifyCookie function when the component mounts
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate, dispatch, Cookies, currentUser]); // Add an empty dependency array here to prevent unnecessary re-renders
+  }, [navigate, dispatch, Cookies]); // Add an empty dependency array here to prevent unnecessary re-renders
 
   // Return the necessary values and functions
   return {

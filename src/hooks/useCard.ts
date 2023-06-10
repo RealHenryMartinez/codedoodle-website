@@ -26,6 +26,7 @@ export const useCard = () => {
   const handleGetData = React.useCallback(async () => {
     if (cards.length <= 0) {
       const { data } = await app.get(`create/get-cards`);
+      console.log(data)
       setCards(data);
       setGotData(true);
     }
@@ -34,7 +35,6 @@ export const useCard = () => {
   // Fetch card data on component mount
   React.useEffect(() => {
     if (!gotData) {
-      console.log("GETTING DATA");
       handleGetData();
     }
   }, [gotData, handleGetData]);

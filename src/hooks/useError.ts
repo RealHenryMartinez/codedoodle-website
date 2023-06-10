@@ -16,7 +16,6 @@ export const handleError = (
       show: false,
       message: "",
     }));
-    console.log("stop,", errorMessage);
   });
   setTimeout(() => {
     setIsAlertVisible((prev) => ({
@@ -24,6 +23,5 @@ export const handleError = (
       show: false,
       message: "",
     }));
-    console.log("stop,", errorMessage);
   }, 3000);
 };
