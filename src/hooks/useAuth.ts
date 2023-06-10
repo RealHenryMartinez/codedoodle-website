@@ -34,7 +34,7 @@ export const useAuth = () => {
     });
 
     // Set the token in cookies with expiration and security options
-    Cookies.set("token", response.data.token);
+    Cookies.set("token", response.data.token, { expires: 0.08 });
     if (response === undefined) {
       return;
     }
@@ -55,7 +55,7 @@ export const useAuth = () => {
     });
 
     // Set the token in cookies with expiration and security options
-    Cookies.set("token", response.data.token);
+    Cookies.set("token", response.data.token, { expires: 0.08 });
 
     if (response === undefined) {
       return;
@@ -75,6 +75,7 @@ export const useAuth = () => {
         localStorage.setItem("login", "false"); // Set login state to false in local storage
         setLogin(false); // Update the login state to false
         localStorage.removeItem("user"); // Remove the user data from local storage
+        handleLogout();
       }
       if (token && !isDoneRef.current) {
         isDoneRef.current = true;
@@ -90,6 +91,9 @@ export const useAuth = () => {
 
             // We navigate to the home page because we don't refresh the user account unless the cookies are updated
             navigate("/"); // Navigate to the home page
+          }
+          else {
+            handleLogout();
           }
         } catch (error) {
           console.error(error);
