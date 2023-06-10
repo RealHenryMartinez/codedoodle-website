@@ -19,7 +19,7 @@ export const handleLogout = () => {
 // The useAuth hook function definition
 export const useAuth = () => {
   // State variables
-  const expirationDays = 1;
+  const expirationDays = 10;
   const [login, setLogin] = React.useState<boolean>(false); // Represents the login state
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
