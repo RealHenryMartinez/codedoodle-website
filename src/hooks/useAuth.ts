@@ -94,9 +94,6 @@ export const useAuth = () => {
             // We navigate to the home page because we don't refresh the user account unless the cookies are updated
             navigate("/"); // Navigate to the home page
           }
-          else {
-            handleLogout();
-          }
         } catch (error) {
           console.error(error);
         }
