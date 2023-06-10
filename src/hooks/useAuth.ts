@@ -55,7 +55,7 @@ export const useAuth = () => {
     });
 
     // Set the token in cookies with expiration and security options
-    Cookies.set("token", response.data.token, { expires: 0.08 });
+    Cookies.set("token", response.data.token, { expires: 1 });
 
     if (response === undefined) {
       return;
