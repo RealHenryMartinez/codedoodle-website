@@ -3,7 +3,7 @@ import { useAuth } from "../hooks/useAuth.js";
 import "../styles/navbar/navbar.css";
 
 export const NavBar = () => {
-	const {} = useAuth() // Detecting auth changes will change this component state 
+	useAuth() // Detecting auth changes will change this component state 
 	const storedLogin = localStorage.getItem("login");
 
 	const navElements = [

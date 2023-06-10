@@ -15,6 +15,5 @@ export const handleFormError = (
       show: false,
       message: "",
     }));
-    console.log("stop,", errorMessage);
   }, 3000);
 };

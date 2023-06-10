@@ -15,7 +15,6 @@ const initialState: IUser = {
 export const fetchUser = createAsyncThunk("useAuthSlice/fetchUser", async () => {
   const token = Cookies.get('token');
   if (token) {
-    console.log(token)
     const { data } = await app.post("", {}, { withCredentials: true });
     console.log(data)
     const { user } = data;

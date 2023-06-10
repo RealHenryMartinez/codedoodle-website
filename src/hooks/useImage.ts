@@ -73,7 +73,6 @@ export const useImage = () => {
 			}
 			// Work later with handling editing of the card image
 			tempCardId = postData.payload._id;
-			console.log('id: ', tempCardId)
 			navigate('/edit-image', {state: {tempCardId}});
 			// to update: get from the card
 			
