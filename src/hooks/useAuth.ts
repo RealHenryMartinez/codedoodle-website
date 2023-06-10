@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import { app } from "../constants/API.js";
-import { setUser } from "../store/slices/authSlice.js";
+import { fetchUser, setUser, user } from "../store/slices/authSlice.js";
 import Cookies from "js-cookie";
-import { useAppDispatch } from "../store/hook.js";
+import { useAppDispatch, useAppSelector } from "../store/hook.js";
 import { useNavigate } from "react-router-dom";
 import { ILogin, IRegister } from "../interfaces/IAuth.js";
 import { setUserCard } from "../store/slices/postSlice.js";
@@ -23,6 +23,7 @@ export const useAuth = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isDoneRef = React.useRef(false);
+  const currentUser = useAppSelector(user);
 
   // Function to handle login
   const handleLogin = async (userInfo: ILogin) => {
@@ -34,9 +35,12 @@ export const useAuth = () => {
 
     // Set the token in cookies with expiration and security options
     Cookies.set("token", response.data.token);
+    if (response === undefined) {
+      return;
+    }
     await setLogin(true); // Update the login state to true
     localStorage.setItem("user", JSON.stringify(response.data.user)); // Save the user data to local storage
-    navigate("/"); // Navigate to the home page
+    navigate("/");
   };
   const handleRegister = async (userInfo: IRegister) => {
     // Make a POST request to the "/auth/login" API endpoint
@@ -49,6 +53,10 @@ export const useAuth = () => {
 
     // Set the token in cookies with expiration and security options
     Cookies.set("token", response.data.token);
+
+    if (response === undefined) {
+      return;
+    }
     await setLogin(true); // Update the login state to true
     localStorage.setItem("user", JSON.stringify(response.data.user)); // Save the user data to local storage
   };
@@ -57,7 +65,6 @@ export const useAuth = () => {
     // Function to verify the existence of cookies and perform actions accordingly
     const verifyCookie = async () => {
       const token = Cookies.get("token"); // Get the token from cookies
-
       if (typeof token === "object" || token === undefined) {
         localStorage.setItem("login", "false"); // Set login state to false in local storage
         setLogin(false); // Update the login state to false
@@ -67,14 +74,13 @@ export const useAuth = () => {
         isDoneRef.current = true;
         try {
           // Make a POST request to verify the token with the API
-          const { data } = await app.post("", {}, { withCredentials: true });
-          const { user } = data;
-          if (user !== undefined) {
-            dispatch(setUser(user)); // Dispatch an action to set the user in the Redux store
-            dispatch(setUserCard(user)); // Dispatch an action to set the user card in the Redux store
+          const userData = await dispatch(fetchUser());
+          if (userData.payload !== undefined) {
+            dispatch(setUser(userData.payload)); // Dispatch an action to set the user in the Redux store
+            dispatch(setUserCard(userData.payload)); // Dispatch an action to set the user card in the Redux store
             setLogin(true); // Update the login state to true
             await localStorage.setItem("login", "true"); // Set login state to true in local storage
-            localStorage.setItem("user", JSON.stringify(user)); // Save the user data to local storage
+            localStorage.setItem("user", JSON.stringify(userData.payload)); // Save the user data to local storage
 
             // We navigate to the home page because we don't refresh the user account unless the cookies are updated
             navigate("/"); // Navigate to the home page
@@ -86,7 +92,8 @@ export const useAuth = () => {
     };
 
     verifyCookie(); // Call the verifyCookie function when the component mounts
-  }, [navigate,dispatch]); // Add an empty dependency array here to prevent unnecessary re-renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, dispatch, Cookies, currentUser]); // Add an empty dependency array here to prevent unnecessary re-renders
 
   // Return the necessary values and functions
   return {
