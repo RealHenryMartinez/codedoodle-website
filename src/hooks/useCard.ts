@@ -26,7 +26,6 @@ export const useCard = () => {
   const handleGetData = React.useCallback(async () => {
     if (cards.length <= 0) {
       const { data } = await app.get(`create/get-cards`);
-      console.log(data)
       setCards(data);
       setGotData(true);
     }

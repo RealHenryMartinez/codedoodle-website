@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import { app } from "../constants/API.js";
-import { fetchUser, setUser, user } from "../store/slices/authSlice.js";
+import { fetchUser, setUser } from "../store/slices/authSlice.js";
 import Cookies from "js-cookie";
-import { useAppDispatch, useAppSelector } from "../store/hook.js";
+import { useAppDispatch} from "../store/hook.js";
 import { useNavigate } from "react-router-dom";
 import { ILogin, IRegister } from "../interfaces/IAuth.js";
 import { setUserCard } from "../store/slices/postSlice.js";
@@ -12,7 +12,7 @@ import { setUserCard } from "../store/slices/postSlice.js";
 // Function to handle logout - does not refresh page when used as it is out of scope of the useAuth making this a preffered function to use
 export const handleLogout = () => {
   Cookies.remove("token"); // Remove the token from cookies
-  localStorage.removeItem("user"); // Remove the user data from local storage
+  // Remove the user data from local storage
   localStorage.setItem("login", "false");
 };
 
@@ -39,7 +39,6 @@ export const useAuth = () => {
     }
     await setLogin(true); // Update the login state to true
     await localStorage.setItem("login", "true");
-    localStorage.setItem("user", JSON.stringify(response.data.user)); // Save the user data to local storage
     dispatch(setUser(response.data.user)); // Dispatch an action to set the user in the Redux store
     dispatch(setUserCard(response.data.user)); // Dispatch an action to set the user card in the Redux store
     navigate("/");
@@ -78,22 +77,18 @@ export const useAuth = () => {
       if (typeof token === "object" || token === undefined) {
         localStorage.setItem("login", "false"); // Set login state to false in local storage
         setLogin(false); // Update the login state to false
-        localStorage.removeItem("user"); // Remove the user data from local storage
         handleLogout();
       }
       if (token && !isDoneRef.current) {
         isDoneRef.current = true;
         try {
-          console.log('tru')
           // Make a POST request to verify the token with the API
           const userData = await dispatch(fetchUser(token));
-          console.log(userData)
           if (userData.payload !== undefined) {
             dispatch(setUser(userData.payload)); // Dispatch an action to set the user in the Redux store
             dispatch(setUserCard(userData.payload)); // Dispatch an action to set the user card in the Redux store
             setLogin(true); // Update the login state to true
             await localStorage.setItem("login", "true"); // Set login state to true in local storage
-            localStorage.setItem("user", JSON.stringify(userData.payload)); // Save the user data to local storage
 
             // We navigate to the home page because we don't refresh the user account unless the cookies are updated
             navigate("/"); // Navigate to the home page

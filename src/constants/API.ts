@@ -6,7 +6,7 @@ const webENV = import.meta.env.VITE_NODE_ENV || "production";
 // Our base url
 export let baseURL = "";
  
-console.log(webENV)
+console.log(webENV);
 if(webENV == "development"){
     baseURL = "https://snippetdeveloperbackend.onrender.com";
 }

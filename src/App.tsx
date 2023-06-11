@@ -14,8 +14,6 @@ function App() {
 	const location = useLocation();
 	useAuth();
 	const storedLogin = localStorage.getItem("login");
-	console.log(storedLogin);
-
 
 	if (location.pathname !== "/auth/login" && storedLogin === "false") {
 		return (

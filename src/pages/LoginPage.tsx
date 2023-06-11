@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { useAuth } from "../hooks/useAuth.js";
 import "../styles/auth/login.css";
 import { useNavigate } from "react-router-dom";
-import { handleError } from "../hooks/useError.js";
 import IError from "../interfaces/form/IError.js";
 import { LoginError } from "../components/LoginError.js";
 import { handleFormError } from "../hooks/useFormError.js";

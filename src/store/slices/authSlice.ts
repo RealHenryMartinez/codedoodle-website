@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { IUser } from "../../interfaces/IAuth.js";
-import Cookies from "js-cookie";
 import { RootState } from "../store.js";
 import { app } from "../../constants/API.js";
 
@@ -15,7 +14,6 @@ const initialState: IUser = {
 export const fetchUser = createAsyncThunk(
   "useAuthSlice/fetchUser",
   async (token: string) => {
-    console.log("Here is token from auth slice:", token);
     if (token) {
       const { data } = await app.post(
         "",
@@ -27,11 +25,8 @@ export const fetchUser = createAsyncThunk(
           },
         }
       );
-      console.log("here is data from auth slice: ", data);
       const { user } = data;
       return user;
-    } else {
-      console.log("no token");
     }
   }
 );
