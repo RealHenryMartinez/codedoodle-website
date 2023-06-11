@@ -11,7 +11,7 @@ const initialState: IUser = {
   password: "",
   _id: "",
 };
-
+// This needs to be fixed from the cookie it sends
 export const fetchUser = createAsyncThunk("useAuthSlice/fetchUser", async (token: string) => {
   console.log("Here is token from auth slice:", token);
   if (token) {
