@@ -10,7 +10,6 @@ import "../styles/profile/profile.css";
 export const ProfilePage = () => {
 	const userInfo = useAppSelector(user);
 	const {cards, removeCard} = useCard();
-	console.log(userInfo)
 	const userCards: ICard[] = cards.filter((card: ICard) => card.userId === userInfo._id)
 	const navigate = useNavigate();
 	const handleUser = () => {
