@@ -84,8 +84,10 @@ export const useAuth = () => {
       if (token && !isDoneRef.current) {
         isDoneRef.current = true;
         try {
+          console.log('tru')
           // Make a POST request to verify the token with the API
-          const userData = await dispatch(fetchUser());
+          const userData = await dispatch(fetchUser(token));
+          console.log(userData)
           if (userData.payload !== undefined) {
             dispatch(setUser(userData.payload)); // Dispatch an action to set the user in the Redux store
             dispatch(setUserCard(userData.payload)); // Dispatch an action to set the user card in the Redux store
@@ -105,7 +107,7 @@ export const useAuth = () => {
 
     verifyCookie(); // Call the verifyCookie function when the component mounts
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate, dispatch, Cookies]); // Add an empty dependency array here to prevent unnecessary re-renders
+  }, [navigate, dispatch]); // Add an empty dependency array here to prevent unnecessary re-renders
 
   // Return the necessary values and functions
   return {
