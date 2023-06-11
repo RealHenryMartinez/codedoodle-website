@@ -12,18 +12,29 @@ const initialState: IUser = {
   _id: "",
 };
 // This needs to be fixed from the cookie it sends
-export const fetchUser = createAsyncThunk("useAuthSlice/fetchUser", async (token: string) => {
-  console.log("Here is token from auth slice:", token);
-  if (token) {
-    const { data } = await app.post("", {}, { withCredentials: true });
-    console.log("here is data from auth slice: ",data)
-    const { user } = data;
-    return user;
+export const fetchUser = createAsyncThunk(
+  "useAuthSlice/fetchUser",
+  async (token: string) => {
+    console.log("Here is token from auth slice:", token);
+    if (token) {
+      const { data } = await app.post(
+        "",
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the request headers
+          },
+        }
+      );
+      console.log("here is data from auth slice: ", data);
+      const { user } = data;
+      return user;
+    } else {
+      console.log("no token");
+    }
   }
-  else {
-    console.log('no token')
-  }
-});
+);
 
 export const useAuthSlice = createSlice({
   name: "useAuthSlice",
@@ -44,7 +55,7 @@ export const useAuthSlice = createSlice({
       return { ...state, ...payload };
     });
   },
-}); 
+});
 
 export const { setUser } = useAuthSlice.actions;
 
