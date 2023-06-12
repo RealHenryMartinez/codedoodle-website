@@ -37,7 +37,7 @@ export const NavBar = () => {
 	]
 	return (
 		<div id="navbar">
-			<Link id="app-title" to="/">Snippets</Link>
+			<Link id="app-title" to="/">Code Doodles</Link>
 			<div id="routes">
 				{ storedLogin !== 'false' ?
 				<>
