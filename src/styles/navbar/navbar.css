@@ -48,8 +48,9 @@
     text-decoration: none;
     color: #fff;
     margin-inline: 2rem;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
+    flex: 1;
 }
 
 @media screen and (min-width: 300px) {
@@ -57,7 +58,7 @@
         flex: 0.5;
     }
     #app-title {
-        flex: 0;
+        flex: 1;
         margin-inline: 1rem;
         font-size: 25px;
     }
