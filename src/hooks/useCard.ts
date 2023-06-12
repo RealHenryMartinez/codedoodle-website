@@ -1,6 +1,6 @@
 import React from "react";
 import { app } from "../constants/API.js";
-
+import Cookies from "js-cookie";
 /**
  * Custom hook for managing card data.
  * Retrieves card data from local storage and API, and provides functions for removing cards.
@@ -15,7 +15,12 @@ export const useCard = () => {
    * @param {string} _id - The ID of the card to be removed.
    */
   const removeCard = async (_id: string) => {
-    const { data } = await app.delete(`create/delete-card/` + _id);
+    const { data } = await app.delete(`create/delete-card/` + _id, {
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`, // Include the token in the request headers
+      },
+    });
     setCards(data);
   };
 
