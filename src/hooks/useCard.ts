@@ -23,16 +23,20 @@ export const useCard = () => {
     });
     setCards(data);
   };
-
   /**
    * Callback function to handle retrieving card data.
    * Fetches card data from the API if it hasn't been retrieved yet.
    */
   const handleGetData = React.useCallback(async () => {
     if (cards.length <= 0) {
-      const { data } = await app.get(`create/get-cards`);
-      setCards(data);
-      setGotData(true);
+      try {
+        const { data } = await app.get(`create/get-cards`);
+        setCards(data);
+        setGotData(true);
+      } catch (error) {
+        console.error("Error retrieving card data:", error);
+        // Handle the error state or display an error message
+      }
     }
   }, [cards.length]);
 
