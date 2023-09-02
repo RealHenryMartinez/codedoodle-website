@@ -14,6 +14,7 @@ const initialState: IUser = {
 export const fetchUser = createAsyncThunk(
   "useAuthSlice/fetchUser",
   async (token: string) => {
+    console.log('token: ', token)
     if (token) {
       const { data } = await app.post(
         "",

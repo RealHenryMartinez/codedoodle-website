@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppDispatch } from "../store/hook.js";
-import { setDesc, setGeneral } from "../store/slices/postSlice.js";
+import { setContent, setGeneral } from "../store/slices/postSlice.js";
 
 const useForm = () => {
 	const [markdownText, setMarkdownText] = React.useState("");
@@ -13,18 +13,18 @@ const useForm = () => {
 		setTitle(e.target.value);
 		dispatch(setGeneral(e.target.value))
 	};
-	const handleImagePreview = (e: any, setImage: any) => {
-		if (e.target.files && e.target.files[0]) {
-			setImage(URL.createObjectURL(e.target.files[0])); // create a uri object for the image preview
-		}
-	};
-	const onInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		const newValue = e.currentTarget.value;
-		setMarkdownText(newValue);
-		dispatch(setDesc(newValue))
+
+	/**
+	 * Handle text input of the markdown content
+	 * @param element Detect changes in text of the input element
+	 */
+	const handleContent = (element: React.ChangeEvent<HTMLTextAreaElement>) => {
+		const currentValue = element.currentTarget.value;
+		setMarkdownText(currentValue);
+		dispatch(setContent(currentValue))
 	};
 
-	return { onInputChange, handleImagePreview, markdownText, title, handleTitleChange};
+	return { handleContent, markdownText, title, handleTitleChange};
 };
 
 export default useForm;

@@ -8,8 +8,8 @@ import Cookies from "js-cookie";
 const token = Cookies.get('token')
 const initialState: IForm = {
   labels: [],
-  userId: "",
-  user: "",
+  uid: "",
+  username: "",
   title: "",
   description: "",
   image: null, // Check later IF you have an image here by the FILE type
@@ -20,7 +20,7 @@ export const makePost = createAsyncThunk(
   async (_, { getState }) => {
     const state = getState() as RootState;
 
-    const { labels, userId, user, title, description, image } =
+    const { labels, uid, username, title, description, image } =
       state.usePostSlice;
 
     try {
@@ -28,8 +28,8 @@ export const makePost = createAsyncThunk(
         "create",
         {
           labels,
-          userId,
-          user,
+          uid,
+          username,
           title,
           description,
           image,
@@ -55,12 +55,12 @@ export const usePostSlice = createSlice({
     setGeneral: (state, { payload }) => {
       state.title = payload;
     },
-    setDesc: (state, { payload }) => {
+    setContent: (state, { payload }) => {
       state.description = payload;
     },
     setUserCard: (state, { payload }) => {
-      state.userId = payload._id;
-      state.user = payload.first_name + " " + payload.last_name;
+      state.uid = payload._id;
+      state.username = payload.first_name + " " + payload.last_name;
     },
     setAddLabel: (state, action: PayloadAction<ILabels>) => {
       state.labels?.push(action.payload);
@@ -74,7 +74,7 @@ export const usePostSlice = createSlice({
   },
 });
 
-export const { setUserCard, setAddLabel, setRemoveLabel, setGeneral, setDesc } =
+export const { setUserCard, setAddLabel, setRemoveLabel, setGeneral, setContent } =
   usePostSlice.actions;
 
 export const card: (state: RootState) => IForm = (state: RootState) =>
