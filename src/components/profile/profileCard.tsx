@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {ICardLabel, ICard } from "../../interfaces/IHome.js";
+import {ICardLabel, ICard } from "../../interfaces/ICard.js";
 import "../../styles/home/PostCard.css";
 import * as BiIcons from "react-icons/bi";
 import { formatDate } from "../../helper/formatDate.js";

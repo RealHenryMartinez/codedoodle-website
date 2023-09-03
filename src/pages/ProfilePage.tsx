@@ -1,4 +1,4 @@
-import { ICard } from "interfaces/IHome.js";
+import { ICard } from "interfaces/ICard.js";
 import { useNavigate } from "react-router-dom";
 import {ProfileCard} from "../components/profile/profileCard.js";
 import { handleLogout} from "../hooks/useAuth.js";
@@ -9,8 +9,9 @@ import "../styles/profile/profile.css";
  
 export const ProfilePage = () => {
 	const userInfo = useAppSelector(user);
+	console.log('user: ', userInfo)
 	const {cards, removeCard} = useCard();
-	const userCards: ICard[] = cards.filter((card: ICard) => card.userId === userInfo._id)
+	const userCards: ICard[] = cards.filter((card: ICard) => card.uid === userInfo._id)
 	const navigate = useNavigate();
 	const handleUser = () => {
 		handleLogout();

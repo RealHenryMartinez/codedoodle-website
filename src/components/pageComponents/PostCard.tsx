@@ -1,6 +1,6 @@
 import { formatDate } from "../../helper/formatDate.js";
 import { Link } from "react-router-dom";
-import {ICardLabel, ICard } from "../../interfaces/IHome.js";
+import {ICardLabel, ICard } from "../../interfaces/ICard.js";
 import "../../styles/home/PostCard.css";
 
 const LabelComponent = (props: ICardLabel) => {
@@ -27,6 +27,7 @@ interface IProps {
 
 export const PostCard = (props: IProps) => {
 	const { card, user } = props;
+	console.log('user: ', user, 'card: ', card)
 	return (
 		<Link
 			to={{ pathname: `/create/view-card/${card._id}` }}

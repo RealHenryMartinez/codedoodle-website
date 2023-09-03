@@ -1,13 +1,19 @@
 import React from "react";
 import { app } from "../constants/API.js";
 import Cookies from "js-cookie";
+import { ICard } from "interfaces/ICard.js";
+
+interface ICardHandler {
+  cards: ICard[],
+  removeCard: (_id: string) => Promise<void>
+}
 /**
  * Custom hook for managing card data.
  * Retrieves card data from local storage and API, and provides functions for removing cards.
  * @returns {Object} An object containing the cards array and the removeCard function.
  */
-export const useCard = () => {
-  const [cards, setCards] = React.useState([]);
+export const useCard = (): ICardHandler => {
+  const [cards, setCards] = React.useState<ICard[]>([]);
   const [gotData, setGotData] = React.useState(false);
 
   /**
@@ -31,6 +37,7 @@ export const useCard = () => {
     if (cards.length <= 0) {
       try {
         const { data } = await app.get(`create/get-cards`);
+        console.log('here are cards: ', data)
         setCards(data);
         setGotData(true);
       } catch (error) {
@@ -42,10 +49,10 @@ export const useCard = () => {
 
   // Fetch card data on component mount
   React.useEffect(() => {
-    if (!gotData) {
+
       handleGetData();
-    }
-  }, [gotData, handleGetData]);
+    
+  }, [handleGetData]);
 
   return {
     cards,

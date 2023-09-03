@@ -6,7 +6,7 @@ import { fetchUser, setUser } from "../store/slices/authSlice.js";
 import Cookies from "js-cookie";
 import { useAppDispatch} from "../store/hook.js";
 import { useNavigate } from "react-router-dom";
-import { ILogin, IRegister } from "../interfaces/IAuth.js";
+import { ILogin, IUser } from "../interfaces/IAuth.js";
 import { setUserCard } from "../store/slices/postSlice.js";
 
 // Function to handle logout - does not refresh page when used as it is out of scope of the useAuth making this a preffered function to use
@@ -43,7 +43,7 @@ export const useAuth = () => {
     dispatch(setUserCard(response.data.user)); // Dispatch an action to set the user card in the Redux store
     navigate("/");
   };
-  const handleRegister = async (userInfo: IRegister) => {
+  const handleRegister = async (userInfo: IUser) => {
     // Make a POST request to the "/auth/login" API endpoint
     const response = await app.post("/auth/register", {
       email: userInfo.email,
